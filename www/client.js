@@ -1,6 +1,8 @@
 const websocketServerURL = "ws://" + location.host;
 var webSocket = new WebSocket(websocketServerURL);
 
+document.getElementById("log-image").style.display = "none";
+
 var connected = false;
 
 function getTimeStamp() {
@@ -36,10 +38,14 @@ function displayNewLog(packet) {
     let response;
     if (packet.log == null) {
         response = "There are no more logs!"
+        document.getElementById("log-image").style.display = "none";
     } else {
         response = "Wood type: " + packet.log.wood_type + "<br>Length: " + packet.log.length + "<br>Diameter: " + packet.log.diameter;
+        document.getElementById("log-image").style.display = "block";
+        document.getElementById("log-image").src = "/logs/" + packet.log.wood_type.toLowerCase() + ".png";
     }
     document.getElementById("log-from-stack").innerHTML = response;
+
     document.getElementById("retrieval-timestamp").innerHTML = "Retrieved at " + getTimeStamp();
 }
 

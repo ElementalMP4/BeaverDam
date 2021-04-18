@@ -31,32 +31,41 @@ var HostServer = http.createServer(function(req, res) {
     var q = url.parse(req.url, true);
     Log(Level.INFO, "Request received: " + q.pathname);
     if (q.pathname == '/') {
-        fs.readFile('./client/index.html', function(err, data) {
+        fs.readFile('./www/index.html', function(err, data) {
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.write(data);
             return res.end();
         });
 
     } else if (q.pathname == '/client.js') {
-        fs.readFile('./client/client.js', function(err, data) {
+        fs.readFile('./www/client.js', function(err, data) {
             res.writeHead(200, { 'Content-Type': 'text/javascript; charset=utf-8' });
             res.write(data);
             return res.end();
         });
 
     } else if (q.pathname == '/style.css') {
-        fs.readFile('./client/style.css', function(err, data) {
+        fs.readFile('./www/style.css', function(err, data) {
             res.writeHead(200, { 'Content-Type': 'text/css' });
             res.write(data);
             return res.end();
         });
 
     } else if (q.pathname == '/background.png') {
-        fs.readFile('./client/background.png', function(err, data) {
+        fs.readFile('./www/img/background.png', function(err, data) {
             res.writeHead(200, { 'Content-Type': 'image/png' });
             res.write(data);
             return res.end();
         });
+
+    } else if (q.pathname.startsWith("/logs/")) {
+        if (fs.existsSync("./www/img" + q.pathname)) {
+            fs.readFile("./www/img" + q.pathname, function(err, data) {
+                res.writeHead(200, { 'Content-Type': 'image/png' });
+                res.write(data);
+                return res.end();
+            });
+        }
 
     } else {
         Log(Level.ERROR, "Resource not found for " + q.pathname);

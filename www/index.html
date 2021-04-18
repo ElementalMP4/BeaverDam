@@ -7,7 +7,6 @@
     <h1>Welcome to the Beaver Dam!</h1>
     <h3 id="status"></h3>
     <h3 id="log-counter"></h3>
-    <script src="client.js"></script>
 </head>
 
 <body>
@@ -56,11 +55,18 @@
 
 
     <div class="align-left half-width">
-        <h3>Retrieve your logs here:</h3>
-        <p id="log-from-stack"></p>
-        <button onclick="removeLogFromStack()"><p>Retrieve a log</p></button>
-        <p id="retrieval-timestamp"></p>
+        <div class="align-left">
+            <h3>Retrieve your logs here:</h3>
+            <p id="log-from-stack"></p>
+            <button onclick="removeLogFromStack()"><p>Retrieve a log</p></button>
+            <p id="retrieval-timestamp"></p>
+        </div>
+        <br />
+        <div class="align-left">
+            <img id="log-image" width="200" height="200">
+        </div>
     </div>
 </body>
+<script src="client.js"></script>
 
 </html>
