@@ -84,12 +84,12 @@ gateway = new WebSocketServer({
 });
 
 //Gateway functions
-function returnStackSize(packet) {
+function returnStackSize() {
     const reply = {
         "command": "stack_size",
         "size": LogPile.length()
     }
-    packet.connection.send(JSON.stringify(reply));
+    gateway.broadcast(JSON.stringify(reply));
 }
 
 function addLogToStack(packet) {
@@ -100,7 +100,7 @@ function addLogToStack(packet) {
         "diameter": packet.log_diameter
     }
     LogPile.push(log);
-    returnStackSize(packet);
+    returnStackSize();
 }
 
 function removeLogFromStack(packet) {
@@ -115,7 +115,7 @@ function removeLogFromStack(packet) {
         Log(Level.SUCCESS, Color.RED + "Log removed from stack");
     }
     packet.connection.send(JSON.stringify(reply));
-    returnStackSize(packet);
+    returnStackSize();
 }
 
 
@@ -136,7 +136,7 @@ gateway.on('request', function(request) {
                 removeLogFromStack(packet);
                 break;
             case "get_size":
-                returnStackSize(packet);
+                returnStackSize();
                 break;
         }
     });
