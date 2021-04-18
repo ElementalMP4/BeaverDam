@@ -15,7 +15,7 @@ class Stack {
         if (this.stack.length == 0) {
             return null;
         } else {
-            return this.stack.shift();
+            return this.stack.pop();
         }
     }
 

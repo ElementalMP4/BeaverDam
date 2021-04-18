@@ -1,14 +1,14 @@
 {
-  "name": "stacks_but_with_beavers",
-  "version": "1.0.0",
-  "description": "stacks, but with beavers",
-  "main": "TheBeaverLog.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "websocket": "^1.0.34"
-  }
+    "name": "stacks_but_with_beavers",
+    "version": "1.0.0",
+    "description": "stacks, but with beavers",
+    "main": "TheBeaverLog.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "ElementalMP4",
+    "license": "ISC",
+    "dependencies": {
+        "websocket": "^1.0.34"
+    }
 }
