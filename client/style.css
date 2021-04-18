@@ -1,0 +1,49 @@
+body {
+    background-image: url("background.png");
+    height: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1,
+h3 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+}
+
+div {
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+}
+
+div.align-left {
+    float: left;
+    border: solid 2px black;
+}
+
+div.half-width {
+    width: 48%;
+    max-width: 48%;
+}
+
+p {
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.p {
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+button {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: solid 2px black;
+    color: black;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+}

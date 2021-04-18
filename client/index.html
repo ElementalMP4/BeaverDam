@@ -1,0 +1,66 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>The Beaver Dam</title>
+    <h1>Welcome to the Beaver Dam!</h1>
+    <h3 id="status"></h3>
+    <h3 id="log-counter"></h3>
+    <script src="client.js"></script>
+</head>
+
+<body>
+    <div class="align-left half-width">
+        <h3>Enter your logs here:</h3>
+        <br></br>
+        <label for="log-types" class="p">Choose a wood type:</label>
+        <select name="log-types" id="log-type">
+          <option value="Oak">Oak</option>
+          <option value="Pine">Pine</option>
+          <option value="Cherry">Cherry</option>
+          <option value="Ash">Ash</option>
+          <option value="Birch">Birch</option>
+          <option value="Sycamore">Sycamore</option>
+          <option value="Spruce">Spruce</option>
+          <option value="Mahogany">Mahogany</option>
+          <option value="Enchanted">Enchanted</option>
+        </select>
+        <br></br>
+
+        <label for="log-lengths" class="p">Choose a log length:</label>
+        <select name="log-lengths" id="log-length">
+          <option value="Small">Small (30-50cm)</option>
+          <option value="Medium">Medium (50-100cm)</option>
+          <option value="Large">Large (100-250cm)</option>
+          <option value="Extra Large">Extra Large (250-500cm)</option>
+        </select>
+        <br></br>
+
+        <label for="log-diameters" class="p">Choose a log diameter:</label>
+        <select name="log-diameters" id="log-diameter">
+          <option value="Small">Small (5-10cm)</option>
+          <option value="Medium">Medium (10-20cm)</option>
+          <option value="Large">Large (30-35cm)</option>
+        </select>
+        <br></br>
+
+        <center>
+            <div>
+                <button onclick="submitLog()"><p>Submit this log</p></button>
+                <br>
+                <p id="submission-timestamp"></p>
+            </div>
+        </center>
+    </div>
+
+
+    <div class="align-left half-width">
+        <h3>Retrieve your logs here:</h3>
+        <p id="log-from-stack"></p>
+        <button onclick="removeLogFromStack()"><p>Retrieve a log</p></button>
+        <p id="retrieval-timestamp"></p>
+    </div>
+</body>
+
+</html>
