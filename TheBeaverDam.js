@@ -100,7 +100,7 @@ function removeLogFromStack(packet) {
         "command": "get_log",
         "log": log
     }
-    if (log == null) {
+    if (LogPile.isEmpty()) {
         Log(Level.WARN, "The log pile is empty!");
     } else {
         Log(Level.SUCCESS, Color.RED + "Log removed from stack");
@@ -112,13 +112,13 @@ function removeLogFromStack(packet) {
 
 //The gateway handler
 gateway.on('request', function(request) {
-    Log(Color.GREEN, "New Beaver Connected To Gateway");
+    Log(Color.GREEN, "New Beaver Connected To Gateway: " + request.key + " @ " + request.remoteAddress);
     const connection = request.accept(null, request.origin);
 
     connection.on('message', function(message) {
         packet = JSON.parse(message.utf8Data);
         packet.connection = connection;
-
+        Log(Level.INFO, "Gateway Command Received: " + packet.command)
         switch (packet.command) {
             case "push_log":
                 addLogToStack(packet);
@@ -133,7 +133,7 @@ gateway.on('request', function(request) {
     });
 
     connection.on('close', function(reasonCode, description) {
-        Log(Color.RED, "Beaver Disconnected From Gateway");
+        Log(Color.RED, "Beaver Disconnected From Gateway: " + request.key + " @ " + request.remoteAddress);
     });
 });
 

@@ -18,6 +18,10 @@ class Stack {
             return this.stack.shift();
         }
     }
+
+    isEmpty() {
+        return this.stack.length == 0;
+    }
 }
 
 exports.Stack = Stack;
