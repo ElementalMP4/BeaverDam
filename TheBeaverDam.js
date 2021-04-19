@@ -21,30 +21,12 @@ const consoleInterface = readline.createInterface({
     output: process.stdout
 });
 
-var LogPile;
-
-switch (config.default_mode) {
-    case "q":
-        LogPile = new structures.Queue();
-        Log(Level.INFO, "The Log Pile has been initialised as a Queue");
-        startServer();
-        break;
-    case "s":
-        LogPile = new structures.Stack();
-        Log(Level.INFO, "The Log Pile has been initialised as a Stack");
-        startServer();
-        break;
-    default:
-        Log(Level.ERROR, "The default mode has not been specified correctly. Exiting.");
-        process.exit(1);
-}
-
 //External files
 const { Log, Color, Level } = require("./logger");
 const structures = require("./structures");
 const config = require("./config.json");
 
-//HTTP Server
+//Build HTTP Server
 var HostServer = http.createServer(function(req, res) {
     var q = url.parse(req.url, true);
     Log(Level.INFO, "Request received: " + q.pathname);
@@ -91,6 +73,25 @@ var HostServer = http.createServer(function(req, res) {
         res.end("<html><center><h1>Invalid Request '" + req.url + "'</h1><hr /></center></html>");
     }
 });
+
+//Set Default Mode
+var LogPile;
+
+switch (config.default_mode) {
+    case "q":
+        LogPile = new structures.Queue();
+        Log(Level.INFO, "The Log Pile has been initialised as a Queue");
+        startServer();
+        break;
+    case "s":
+        LogPile = new structures.Stack();
+        Log(Level.INFO, "The Log Pile has been initialised as a Stack");
+        startServer();
+        break;
+    default:
+        Log(Level.ERROR, "The default mode has not been specified correctly. Exiting.");
+        process.exit(1);
+}
 
 //Gateway functions
 function returnStackSize() {
